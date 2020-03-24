@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Book.associate = function(models) {
     Book.belongsTo(models.Author);
+    Book.hasMany(models.Review);
     Book.belongsToMany(models.Order,{
       through:models.OrderBook
     }, { onDelete: 'cascade' });

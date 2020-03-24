@@ -17,6 +17,7 @@ const authorsRouter = require('./routes/authors.js');
 const genresRouter = require('./routes/genres.js');
 const ordersRouter = require('./routes/orders.js');
 const usersRouter = require('./routes/users.js');
+const reviewsRouter = require('./routes/reviews.js');
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -26,5 +27,6 @@ app.use('/authors',authorsRouter);
 app.use('/genres',genresRouter);
 app.use('/orders',ordersRouter);
 app.use('/users',usersRouter);
+app.use('/reviews',reviewsRouter)
 
 app.listen(PORT,()=>console.log('server running on '+PORT));

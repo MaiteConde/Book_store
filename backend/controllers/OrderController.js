@@ -1,15 +1,16 @@
-const { Book, Order, OrderBook} = require('../models/index.js')
+const { Book, Order, User, OrderBook} = require('../models/index.js')
 const OrderController = {
     getAll(req,res){
         Order.findAll({
-          include:[{ model: Book, attributes: { exclude: ["stock"] }}]
+          include:[{ model: Book, attributes: { exclude: ["stock"] }}, User]
         })
         .then(orders=>res.send(orders))
     },
     insert(req,res){
         Order.create({
             status:"pending",
-            deliveryDate:req.body.deliveryDate
+            deliveryDate:req.body.deliveryDate,
+            UserId:req.body.UserId
         })
         .then(order => {
             req.body.books.forEach(book=>{

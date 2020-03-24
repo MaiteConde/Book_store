@@ -1,9 +1,9 @@
-const {Book, Genre, Author, GenreBook, Sequelize, sequelize} = require('../models/index');
+const {Book, Genre, Author, GenreBook, Review, Sequelize, sequelize} = require('../models/index');
 const { Op} = Sequelize;
 const BookController = {
     getAll(req,res){
         Book.findAll({
-            include:[Author, Genre]
+            include:[Author, Genre, Review]
         })
         .then(books=>res.send(books))
     },
